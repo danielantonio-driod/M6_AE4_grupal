@@ -1,0 +1,10 @@
+{% extends "formulario_base.html" %}
+{% block title %}Registrar Participante{% endblock %}
+{% block header %}Registrar Participante{% endblock %}
+{% block formulario_base %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary mt-3">Registrar Participante</button>
+</form>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Sistema de Registro de Eventos{% endblock %}
+
+{% block header %}Bienvenido al sistema de registro de eventos{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4 rounded shadow-sm">
+    <div class="container-fluid">
+        <span class="navbar-brand mb-0 h4">Registrar</span>
+        <div class="navbar-nav">
+            <a class="nav-link" href="{% url 'registro_participantes' %}">Registrar Participante</a>
+            <a class="nav-link" href="{% url 'registro_evento' %}">Registrar Evento</a>
+        </div>
+    </div>
+</nav>
+
+<h4 class="mb-3">Eventos Registrados</h4>
+{% if eventos %}
+    <div class="card">
+    <ul class="list-group">
+        {% for evento in eventos %}
+        <li class="list-group-item mb-3 shadow-sm">
+            <strong>{{ evento.nombre }}</strong> <br>
+            <span class="text-muted">Fecha:</span> {{ evento.fecha }}<br>
+            <span class="text-muted">Ubicación:</span> {{ evento.ubicacion|default:"No especificada" }}
+            <ul class="mt-2">
+                {% for participante in evento.participantes.all %}
+                <li>{{ participante.nombre }} - {{ participante.correo }}</li>
+                {% empty %}
+                <li class="text-muted">No hay participantes registrados.</li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+    </div>
+{% else %}
+    <div class="alert alert-info">No hay eventos registrados.</div>
+{% endif %}
+{% endblock %}
