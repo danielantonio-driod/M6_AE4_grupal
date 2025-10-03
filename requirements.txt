@@ -1,0 +1,17 @@
+# Django Framework
+Django==5.2.6
+
+# Base de datos SQLite (incluida con Python)
+# No requiere instalación adicional
+
+# Utilidades para fechas y tiempo (incluidas con Django)
+pytz==2023.3
+
+# Para trabajar con archivos estáticos
+whitenoise==6.5.0
+
+# Herramientas de desarrollo (opcionales)
+python-decouple==3.8
+
+# Para validaciones adicionales de email
+email-validator==2.0.0
